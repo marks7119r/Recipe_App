@@ -1,39 +1,48 @@
 package com.example.recipe_app;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
 import java.util.List;
 
+public class RecipeManager {
+    private ObservableList<Recipe> recipes;
 
-public class RecipeManager  {
-    private List<Recipe> recipes;
-    private List<RecipeCategory> categories;
-
-    // Methods for managing recipes and categories
-    public void addRecipe(Recipe recipe) {
-        // Add the recipe to the list and database
-    }
-
-    public void editRecipe(Recipe recipe) {
-        // Edit the recipe in the list and update the database
-    }
-
-    public void deleteRecipe(Recipe recipe) {
-        // Remove the recipe from the list and database
-    }
-
-    public void addCategory(RecipeCategory category) {
-        // Add the category to the list and database
-    }
-
-    public void editCategory(RecipeCategory category) {
-        // Edit the category in the list and update the database
-    }
-
-    public void deleteCategory(RecipeCategory category) {
-        // Remove the category from the list and database
+    public RecipeManager() {
+        this.recipes = FXCollections.observableArrayList();
     }
 
     // Other methods for managing recipes and categories
 
+    public ObservableList<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void addRecipe(Recipe recipe) {
+        recipes.add(recipe);
+    }
+
+    public void editRecipe(Recipe recipe) {
+        // Implement edit logic
+    }
+
+    public void deleteRecipe(Recipe recipe) {
+        recipes.remove(recipe);
+    }
+
+    // Other methods...
+
+    // For testing purposes, you can add some sample recipes
+    public void addSampleRecipes() {
+        Recipe recipe1 = new Recipe("Sample Recipe 1",
+                new ArrayList<>(List.of("Ingredient 1", "Ingredient 2")),
+                "Instructions for sample recipe 1", 30, 4, "Notes for sample recipe 1", "Sample Category");
+
+        Recipe recipe2 = new Recipe("Sample Recipe 2",
+                new ArrayList<>(List.of("Ingredient A", "Ingredient B")),
+                "Instructions for sample recipe 2", 20, 3, "Notes for sample recipe 2", "Sample Category");
+
+        recipes.addAll(recipe1, recipe2);
+    }
 }
